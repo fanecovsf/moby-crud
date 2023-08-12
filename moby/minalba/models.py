@@ -17,5 +17,4 @@ class Placa(models.Model):
     @staticmethod
     def query_all():
         placas = Placa.objects.using(DATABASE).all()
-        json_data = json.dumps(list(placas.values()), cls=DjangoJSONEncoder)
-        return json_data
+        return placas
