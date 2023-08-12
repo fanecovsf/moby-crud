@@ -29,7 +29,8 @@ INSTALLED_APPS = [
 
 INSTALLED_APPS += [
     'home',
-    'minalba'
+    'minalba',
+    'vibra'
 ]
 
 MIDDLEWARE = [
