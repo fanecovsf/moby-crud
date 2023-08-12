@@ -4,9 +4,9 @@ DATABASE = 'default'
 
 class Cliente(models.Model):
     codigo = models.CharField(max_length=255, primary_key=True)
-    nome = models.CharField()
-    modelo_de_negocio = models.CharField()
-    tipo_de_cliente = models.CharField()
+    nome = models.CharField(max_length=255)
+    modelo_de_negocio = models.CharField(max_length=255)
+    tipo_de_cliente = models.CharField(max_length=255)
     outbound = models.BooleanField()
 
     def __str__(self) -> str:
@@ -25,10 +25,10 @@ class Cliente(models.Model):
     
 
 class Produto(models.Model):
-    produto_codigo = models.CharField(primary_key=True)
-    produto_nome = models.CharField()
-    produto_tipo = models.CharField()
-    produto_grupo = models.CharField()
+    produto_codigo = models.CharField(max_length=255, primary_key=True)
+    produto_nome = models.CharField(max_length=255)
+    produto_tipo = models.CharField(max_length=255)
+    produto_grupo = models.CharField(max_length=255)
     produto_torre = models.BooleanField() #True=Torre / False=Vibra
 
     def __str__(self) -> str:
@@ -48,10 +48,10 @@ class Produto(models.Model):
     
 
 class Transportadora(models.Model):
-    transportadora_codigo_sap = models.CharField(primary_key=True)
-    transportadora_nome_sap = models.CharField()
-    transportadora_cnpj = models.CharField()
-    transportadora_grupo_atlas = models.CharField()
+    transportadora_codigo_sap = models.CharField(max_length=255, primary_key=True)
+    transportadora_nome_sap = models.CharField(max_length=255)
+    transportadora_cnpj = models.CharField(max_length=255)
+    transportadora_grupo_atlas = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return f'Código SAP: {self.transportadora_codigo_sap}, Nome SAP: {self.transportadora_nome_sap}'
