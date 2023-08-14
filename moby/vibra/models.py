@@ -44,6 +44,11 @@ class Produto(models.Model):
     def get(codigo):
         produto = Produto.objects.using(DATABASE).get(produto_codigo=codigo)
         return produto
+    
+    @staticmethod
+    def lista_grupos():
+        grupos = Produto.objects.using(DATABASE).values_list('produto_grupo', flat=True).distinct()
+        return list(grupos)
 
     
 
