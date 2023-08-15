@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from util.util import Util
 
 from vibra.models import Cliente, Produto, Transportadora
 
@@ -16,8 +17,10 @@ def clientes(request):
         else:
             clientes = clientes.filter(outbound=True)
 
+    page = Util.pagination(clientes, 100, request)
+
     return render(request, 'pages/vibra-clientes.html', context={
-        'clientes':clientes
+        'page':page
         }
     )
 
@@ -44,8 +47,10 @@ def produtos(request):
     if search_name:
         produtos = produtos.filter(produto_nome__contains=search_name)
 
+    page = Util.pagination(produtos, 100, request)
+
     return render(request, 'pages/vibra-produtos.html', context={
-            'produtos':produtos
+            'page':page
         }
     )
 
@@ -87,8 +92,10 @@ def transportadoras(request):
     if search_name:
         transportadoras = transportadoras.filter(transportadora_nome_sap__contains=search_name)
 
+    page = Util.pagination(transportadoras, 100, request)
+
     return render(request, 'pages/vibra-transportadoras.html', context={
-            'transportadoras':transportadoras
+            'page':page
         }
     )
 

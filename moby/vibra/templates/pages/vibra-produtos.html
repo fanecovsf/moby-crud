@@ -45,7 +45,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for p in produtos %}
+            {% for p in page.object_list %}
             <tr>
               <td>{{p.produto_codigo}}</td>
               <td>{{p.produto_nome}}</td>
@@ -60,7 +60,20 @@
           </tbody>
         </table>
       </section>
+    </div>
+    <div class="page-links" id="page-links">
+      {% if page.has_previous %}
+        <a href="{% url 'produtos' %}?page={{page.previous_page_number}}">Anterior</a>
+      {% endif %}
 
+      {% if page.number > 1 %}
+        <p>Página {{page.number}}</p>
+      {% endif %}
+
+
+      {% if page.has_next %}
+        <a href="{% url 'produtos' %}?page={{page.next_page_number}}">Próximo</a>
+      {% endif %}
     </div>
   </body>
 </html>
