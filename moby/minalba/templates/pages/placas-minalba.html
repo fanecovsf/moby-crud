@@ -43,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for p in placas %}
+            {% for p in page.object_list %}
             <tr>
               <td>{{p.placa}}</td>
               <td>{{p.classificacao|default:"Indefinido"}}</td>
@@ -54,7 +54,22 @@
             {% endfor %}
           </tbody>
         </table>
+        
       </section>
+    </div>
+    <div class="page-links" id="page-links">
+      {% if page.has_previous %}
+        <a href="{% url 'placas' %}?page={{page.previous_page_number}}">Anterior</a>
+      {% endif %}
+
+      {% if page.number > 1 %}
+        <p>Página {{page.number}}</p>
+      {% endif %}
+
+
+      {% if page.has_next %}
+        <a href="{% url 'placas' %}?page={{page.next_page_number}}">Próximo</a>
+      {% endif %}
     </div>
   </body>
 </html>

@@ -1,8 +1,4 @@
-from typing import Any
 from django.db import models
-from django.http import HttpResponse
-from django.core.serializers.json import DjangoJSONEncoder
-import json
 
 DATABASE = 'default'
 
@@ -18,8 +14,4 @@ class Placa(models.Model):
     def query_all():
         placas = Placa.objects.using(DATABASE).all()
         return placas
-    
-    @staticmethod
-    def filter_placa(placa):
-        placas = Placa.objects.using(DATABASE).filter(placa__contains=placa)
-        return placas
+

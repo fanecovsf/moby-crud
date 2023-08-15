@@ -1,17 +1,23 @@
 from django.shortcuts import render, redirect
 from minalba.models import Placa
+from django.core.paginator import Paginator
 
 def placas(request):
     search_placa = request.GET.get('search', '')
+    placas = Placa.query_all()
+
+    placas_paginator = Paginator(placas, 2)
+    page_num = request.GET.get('page')
+    page = placas_paginator.get_page(page_num)
 
     if search_placa:
-        placas = Placa.filter_placa(search_placa)
+        placas = placas.filter(placa__contains=search_placa)
 
     else:
-        placas = Placa.query_all()
+        pass
 
     return render(request, 'pages/placas-minalba.html', context={
-        'placas':placas
+        'page':page
     })
     
 def edit_placa(request, id):
