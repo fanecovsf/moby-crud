@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from vibra.models import Cliente, Produto
+from vibra.models import Cliente, Produto, Transportadora
 
 def clientes(request):
     search_name = request.GET.get('search-name')
@@ -71,4 +71,39 @@ def edit_produto(request, codigo):
         produto.save()
 
         return redirect('produtos')
+    
+def transportadoras(request):
+    search_cod = request.GET.get('search-cod')
+    search_grupo = request.GET.get('search-grupo')
+    search_name = request.GET.get('search-nome')
+    transportadoras = Transportadora.query_all()
+
+    if search_cod:
+        transportadoras = transportadoras.filter(transportadora_codigo_sap__contains=search_cod)
+
+    if search_grupo:
+        transportadoras = transportadoras.filter(transportadora_grupo_atlas__contains=search_grupo)
+
+    if search_name:
+        transportadoras = transportadoras.filter(transportadora_nome_sap__contains=search_name)
+
+    return render(request, 'pages/vibra-transportadoras.html', context={
+            'transportadoras':transportadoras
+        }
+    )
+
+def transportadora(request, codigo):
+    transportadora = Transportadora.get(codigo)
+
+    if request.method == 'POST':
+        transportadora.transportadora_grupo_atlas = request.POST.get('grupo')
+        transportadora.save()
+
+        return redirect('transportadoras')
+
+    if request.method == 'GET':
+        return render(request, 'pages/edit-transportadoras.html', context={
+                'transportadora':transportadora
+            }
+        )
 

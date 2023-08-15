@@ -64,8 +64,10 @@ class Transportadora(models.Model):
 
     @staticmethod
     def query_all():
-        Transportadora.objects.using(DATABASE).all()
+        transportadoras = Transportadora.objects.using(DATABASE).all()
+        return transportadoras
 
     @staticmethod
     def get(codigo):
-        Transportadora.objects.using(DATABASE).get(transportadora_codigo_sap=codigo)
+        transportadora = Transportadora.objects.using(DATABASE).get(transportadora_codigo_sap=codigo)
+        return transportadora
