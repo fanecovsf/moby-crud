@@ -1,6 +1,6 @@
 from django.db import models
 
-DATABASE = 'default'
+DATABASE = 'db_vibra'
 
 class Cliente(models.Model):
     codigo = models.CharField(max_length=255, primary_key=True)
@@ -8,6 +8,9 @@ class Cliente(models.Model):
     modelo_de_negocio = models.CharField(max_length=255)
     tipo_de_cliente = models.CharField(max_length=255)
     outbound = models.BooleanField()
+
+    class Meta:
+        db_table = '"sc_sap"."tb_clientes"'
 
     def __str__(self) -> str:
         return f'Código: {self.codigo}, Nome: {self.nome}'
@@ -30,6 +33,9 @@ class Produto(models.Model):
     produto_tipo = models.CharField(max_length=255)
     produto_grupo = models.CharField(max_length=255)
     produto_torre = models.BooleanField() #True=Torre / False=Vibra
+
+    class Meta:
+        db_table = '"sc_sap"."tb_produtos"'
 
     def __str__(self) -> str:
         return f'Código: {self.produto_codigo}, Nome: {self.produto_nome}'
@@ -57,6 +63,9 @@ class Transportadora(models.Model):
     transportadora_nome_sap = models.CharField(max_length=255)
     transportadora_cnpj = models.CharField(max_length=255)
     transportadora_grupo_atlas = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = '"sc_sap"."tb_transportadoras"'
 
     def __str__(self) -> str:
         return f'Código SAP: {self.transportadora_codigo_sap}, Nome SAP: {self.transportadora_nome_sap}'

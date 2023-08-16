@@ -74,15 +74,19 @@ WSGI_APPLICATION = 'moby.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_django',
+        'USER': 'postgres',
+        'PASSWORD': 'pRxI65oIubsdTlf',
+        'HOST': '4.228.57.67',
+        'PORT': '5432'
     },
 
     'db_vibra': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db_vibra',
         'USER': 'postgres',
-        'PASSWORD': 'pRxI65oIubsdTl',
+        'PASSWORD': 'pRxI65oIubsdTlf',
         'HOST': '4.228.57.67',
         'PORT': '5432'
     },
@@ -91,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db_minalba',
         'USER': 'postgres',
-        'PASSWORD': 'pRxI65oIubsdTl',
+        'PASSWORD': 'pRxI65oIubsdTlf',
         'HOST': '4.228.57.67',
         'PORT': '5432'
     },
@@ -100,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'BD01-VIBRA',
         'USER': 'postgres',
-        'PASSWORD': 'pRxI65oIubsdTl',
+        'PASSWORD': 'pRxI65oIubsdTlf',
         'HOST': '4.228.57.67',
         'PORT': '5432'
     }

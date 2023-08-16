@@ -20,9 +20,12 @@ def clientes(request):
     page = Util.pagination(clientes, 100, request)
 
     return render(request, 'pages/vibra-clientes.html', context={
-        'page':page
+        'page':page,
+        'search_name':search_name,
+        'search_inbound':search_inbound
         }
     )
+
 
 def edit_cliente(request, codigo):
     cliente = Cliente.get(codigo)
@@ -40,6 +43,7 @@ def edit_cliente(request, codigo):
 
         return redirect('clientes')
     
+    
 def produtos(request):
     search_name = request.GET.get('search-name')
     produtos = Produto.query_all()
@@ -50,9 +54,11 @@ def produtos(request):
     page = Util.pagination(produtos, 100, request)
 
     return render(request, 'pages/vibra-produtos.html', context={
-            'page':page
+            'page':page,
+            'search_name':search_name
         }
     )
+
 
 def edit_produto(request, codigo):
     produto = Produto.get(codigo)
@@ -77,6 +83,7 @@ def edit_produto(request, codigo):
 
         return redirect('produtos')
     
+    
 def transportadoras(request):
     search_cod = request.GET.get('search-cod')
     search_grupo = request.GET.get('search-grupo')
@@ -95,9 +102,13 @@ def transportadoras(request):
     page = Util.pagination(transportadoras, 100, request)
 
     return render(request, 'pages/vibra-transportadoras.html', context={
-            'page':page
+            'page':page,
+            'search_cod':search_cod,
+            'search_grupo':search_grupo,
+            'search_name':search_name
         }
     )
+
 
 def transportadora(request, codigo):
     transportadora = Transportadora.get(codigo)

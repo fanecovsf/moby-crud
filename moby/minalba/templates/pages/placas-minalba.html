@@ -59,16 +59,15 @@
     </div>
     <div class="page-links" id="page-links">
       {% if page.has_previous %}
-        <a href="{% url 'placas' %}?page={{page.previous_page_number}}">Anterior</a>
+          <a href="{% url 'placas' %}?page={{page.previous_page_number}}&search_placa={{ search_placa }}">Anterior</a>
       {% endif %}
-
+  
       {% if page.number > 1 %}
-        <p>Página {{page.number}}</p>
+          <p>Página {{page.number}}</p>
       {% endif %}
-
-
+  
       {% if page.has_next %}
-        <a href="{% url 'placas' %}?page={{page.next_page_number}}">Próximo</a>
+          <a href="{% url 'placas' %}?page={{page.next_page_number}}&search_placa={{ search_placa }}">Próximo</a>
       {% endif %}
     </div>
   </body>
