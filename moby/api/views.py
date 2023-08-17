@@ -22,7 +22,7 @@ class APITransportadora(APIView):
             try:
                 transp = Transportadora.get_cnpj(transp_cnpj)
                 serializer = TransportadoraSerializer(transp, many=True)
-                return Response(serializer.data, many=True)
+                return Response(serializer.data, many=True, status=status.HTTP_200_OK)
             
             except Transportadora.DoesNotExist:
                 return Response({'error':'Transportadora não enconstrada'}, status=status.HTTP_404_NOT_FOUND)

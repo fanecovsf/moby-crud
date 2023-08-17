@@ -66,6 +66,17 @@ Permite a edição de uma placa específica, baseada no seu ID.
 **Resposta**
 - Código de Status: 200 (OK)
 
+## Aplicativo API
+
+### URL Endpoints
+
+#### 1. GET /transportadora_cnpj/
+
+É necessário o envio de 2 parâmetros no header: AuthenticationKey e cnpj. A API fará uma busca da transportadora pelo cnpj enviado.
+
+**Respota**
+- Código de Status: 200 (OK)
+
 ## Tecnologias utilizadas
 - Django
 - Outras bibliotecas e módulos conforme necessário
