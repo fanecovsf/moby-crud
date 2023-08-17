@@ -63,7 +63,7 @@
     </div>
     <div class="page-links" id="page-links">
       {% if page.has_previous %}
-          <a href="{% url 'produtos' %}?page={{page.previous_page_number}}&search-name={{ search_name }}">Anterior</a>
+          <a href="{% url 'produtos' %}?page={{page.previous_page_number}}&search-name={{ "" if search_name == None else search_name }}">Anterior</a>
       {% endif %}
   
       {% if page.number > 1 %}
@@ -71,7 +71,7 @@
       {% endif %}
   
       {% if page.has_next %}
-          <a href="{% url 'produtos' %}?page={{page.next_page_number}}&search-name={{ search_name }}">Próximo</a>
+          <a href="{% url 'produtos' %}?page={{page.next_page_number}}&search-name={{ "" if search_name == None else search_name }}">Próximo</a>
       {% endif %}
     </div>
   </body>
