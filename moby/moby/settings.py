@@ -34,7 +34,8 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'home',
     'minalba',
-    'vibra'
+    'vibra',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+VIBRA_API_KEY = 'G9A5hBGIlcDOM0A7m9F5yY89PFTTmC6PrfiwHtxeQi2YWjS38s0Qc4VIEXE8rk82'
