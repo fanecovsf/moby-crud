@@ -65,7 +65,6 @@ class Transportadora(models.Model):
     transportadora_grupo_atlas = models.CharField(max_length=255)
 
     class Meta:
-        abstract = True
         db_table = '"sc_sap"."tb_transportadoras"'
 
     def __str__(self) -> str:
