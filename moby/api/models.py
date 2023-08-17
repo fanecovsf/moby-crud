@@ -1,15 +1,8 @@
-from django.db import models
+from moby.abstract_models import BaseTransportadora
 
 DATABASE = 'db_vibra'
 
-class Transportadora(models.Model):
-    transportadora_codigo_sap = models.CharField(max_length=255, primary_key=True)
-    transportadora_nome_sap = models.CharField(max_length=255)
-    transportadora_cnpj = models.CharField(max_length=255)
-    transportadora_grupo_atlas = models.CharField(max_length=255)
-
-    class Meta:
-        db_table = '"sc_sap"."tb_transportadoras"'
+class Transportadora(BaseTransportadora):
 
     def __str__(self) -> str:
         return f'Código SAP: {self.transportadora_codigo_sap}, Nome SAP: {self.transportadora_nome_sap}'
