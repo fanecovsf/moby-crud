@@ -136,7 +136,7 @@ class TransportadoraCNPJAPI(APIView):
         transp_cnpj = request.headers.get('cnpj')
 
         if not transp_cnpj:
-            Response(status=status.HTTP_428_PRECONDITION_REQUIRED)
+            return Response(status=status.HTTP_428_PRECONDITION_REQUIRED)
 
         else:
             try:
