@@ -160,3 +160,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 VIBRA_API_KEY = 'G9A5hBGIlcDOM0A7m9F5yY89PFTTmC6PrfiwHtxeQi2YWjS38s0Qc4VIEXE8rk82'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+}
