@@ -35,7 +35,6 @@ INSTALLED_APPS += [
     'home',
     'minalba',
     'vibra',
-    'api'
 ]
 
 MIDDLEWARE = [
