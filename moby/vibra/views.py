@@ -132,7 +132,7 @@ def transportadora(request, codigo):
     
 
 class TransportadoraCNPJAPI(APIView):
-    def get(self, request):
+    def post(self, request):
         transp_cnpj = request.data.get('cnpj')
 
         if not transp_cnpj:
