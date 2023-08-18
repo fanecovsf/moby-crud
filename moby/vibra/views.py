@@ -142,7 +142,9 @@ class TransportadoraCNPJAPI(APIView):
             try:
                 transp = Transportadora.get_cnpj(str(transp_cnpj))
                 serializer = TransportadoraSerializer(transp)
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                response = Response(serializer.data, status=status.HTTP_200_OK)
+                response["Access-Control-Allow-Origin"] = "*"
+                return response
             
             except Transportadora.DoesNotExist:
                 return Response({'error':'Transportadora não encontrada'} ,status=status.HTTP_404_NOT_FOUND)
