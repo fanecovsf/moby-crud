@@ -132,8 +132,8 @@ def transportadora(request, codigo):
     
 
 class TransportadoraCNPJAPI(APIView):
-    def post(self, request):
-        transp_cnpj = request.data.get('cnpj')
+    def get(self, request):
+        transp_cnpj = request.headers.get('cnpj')
 
         if not transp_cnpj:
             return Response({'erro':'Insira um CNPJ.'},status=status.HTTP_428_PRECONDITION_REQUIRED)
