@@ -31,7 +31,8 @@ def clientes(request):
     return render(request, 'pages/vibra-clientes.html', context={
         'page':page,
         'search_name':search_name,
-        'search_inbound':search_inbound
+        'search_inbound':search_inbound,
+        'search_modelo':search_modelo
         }
     )
 
