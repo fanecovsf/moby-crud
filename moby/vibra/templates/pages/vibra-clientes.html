@@ -26,10 +26,20 @@
               name="search-name"
               placeholder="🔍 Digite o nome do cliente"
             />
-          </div>  
+          </div>
+          <div>
+            <select name="search-modelo" class="dropDown" id="drop">
+              <option value="" disabled selected>Modelo de negócio</option>
+              <option value="">Todos</option>
+              <option value="B2C">B2C</option>
+              <option value="B2B">B2B</option>
+              <option value="Indefinido">Indefinido</option>
+            </select>
+          </div>
           <div>
             <select name="drop" class="dropDown" id="drop">
-              <option value="" disabled selected>Selecione a operação</option>
+              <option value="" disabled selected>Operação</option>
+              <option value="">Todos</option>
               <option value="inbound">Inbound</option>
               <option value="outbound">Outbound</option>
             </select>

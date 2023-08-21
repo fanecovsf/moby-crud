@@ -11,7 +11,8 @@ from rest_framework.views import APIView
 def clientes(request):
     search_name = request.GET.get('search-name')
     search_inbound = request.GET.get('drop')
-    clientes = Cliente.query_all()
+    search_modelo = request.GET.get('search-modelo')
+    clientes = Cliente.query_all().order_by('codigo')
 
     if search_name:
         clientes = clientes.filter(nome__contains=search_name)
@@ -21,6 +22,9 @@ def clientes(request):
             clientes = clientes.filter(outbound=False)
         else:
             clientes = clientes.filter(outbound=True)
+
+    if search_modelo:
+        clientes = clientes.filter(modelo_de_negocio__contains=search_modelo)
 
     page = Util.pagination(clientes, 100, request)
 
@@ -51,7 +55,7 @@ def edit_cliente(request, codigo):
     
 def produtos(request):
     search_name = request.GET.get('search-name')
-    produtos = Produto.query_all()
+    produtos = Produto.query_all().order_by('produto_codigo')
 
     if search_name:
         produtos = produtos.filter(produto_nome__contains=search_name)
@@ -93,7 +97,7 @@ def transportadoras(request):
     search_cod = request.GET.get('search-cod')
     search_grupo = request.GET.get('search-grupo')
     search_name = request.GET.get('search-nome')
-    transportadoras = Transportadora.query_all()
+    transportadoras = Transportadora.query_all().order_by('transportadora_codigo_sap')
 
     if search_cod:
         transportadoras = transportadoras.filter(transportadora_codigo_sap__contains=search_cod)
