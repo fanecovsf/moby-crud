@@ -78,7 +78,7 @@
       {% endif %}
   
       {% if page.has_next %}
-          <a href="{% url 'clientes' %}?page={{page.next_page_number}}&search-name={{ search_name }}&drop={{ search_inbound }}">Próximo</a>
+          <a href="{% url 'clientes' %}?page={{page.next_page_number}}&search-name={{ search_name|default:'' }}&drop={{ search_inbound|default:'' }}">Próximo</a>
       {% endif %}
     </div>
   </body>
