@@ -48,6 +48,13 @@ Permite a edição de uma transportadora específica, baseada no seu código.
 **Resposta**
 - Código de Status: 200 (OK)
 
+#### 7. GET /transportadora_cnpj/
+
+É necessário o envio de 2 parâmetros no header: AuthenticationKey e cnpj. A API fará uma busca da transportadora pelo cnpj enviado.
+
+**Respota**
+- Código de Status: 200 (OK)
+
 ## Aplicativo Minalba
 
 ### URL Endpoints

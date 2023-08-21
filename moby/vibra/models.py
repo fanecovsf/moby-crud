@@ -80,3 +80,8 @@ class Transportadora(models.Model):
     def get(codigo):
         transportadora = Transportadora.objects.using(DATABASE).get(transportadora_codigo_sap=codigo)
         return transportadora
+    
+    @staticmethod
+    def get_cnpj(cnpj: str):
+        transportadora = Transportadora.objects.using(DATABASE).get(transportadora_cnpj=cnpj)
+        return transportadora

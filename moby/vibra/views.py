@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from util.util import Util
 
 from vibra.models import Cliente, Produto, Transportadora
+from vibra.serializers import TransportadoraSerializer
+
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.views import APIView
 
 def clientes(request):
     search_name = request.GET.get('search-name')
@@ -124,4 +129,23 @@ def transportadora(request, codigo):
                 'transportadora':transportadora
             }
         )
+    
+
+class TransportadoraCNPJAPI(APIView):
+    def get(self, request):
+        transp_cnpj = request.headers.get('cnpj')
+
+        if not transp_cnpj:
+            return Response({'erro':'Insira um CNPJ.'},status=status.HTTP_428_PRECONDITION_REQUIRED)
+
+        else:
+            try:
+                transp = Transportadora.get_cnpj(str(transp_cnpj))
+                serializer = TransportadoraSerializer(transp)
+                response = Response(serializer.data, status=status.HTTP_200_OK)
+                response["Access-Control-Allow-Origin"] = "*"
+                return response
+            
+            except Transportadora.DoesNotExist:
+                return Response({'error':'Transportadora não encontrada'} ,status=status.HTTP_404_NOT_FOUND)
 
