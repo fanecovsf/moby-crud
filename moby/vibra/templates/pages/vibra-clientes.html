@@ -64,13 +64,13 @@
           <tbody>
             {% for c in page.object_list %}
             <tr>
-              <td>{{c.codigo}}</td>
-              <td>{{c.nome}}</td>
+              <td>{{c.codigo_sap}}</td>
+              <td>{{c.nome_sap}}</td>
               <td>{{c.modelo_de_negocio}}</td>
               <td>{{c.tipo_de_cliente}}</td>
               <td>{{ c.outbound|yesno:"Outbound,Inbound" }}</td>
               <td>
-                <a href="{{c.codigo}}" class="edit-button">Editar</a>
+                <a href="{{c.codigo_sap}}" class="edit-button">Editar</a>
               </td>
             </tr>
             {% endfor %}

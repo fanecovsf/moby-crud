@@ -12,10 +12,10 @@ def clientes(request):
     search_name = request.GET.get('search-name')
     search_inbound = request.GET.get('drop')
     search_modelo = request.GET.get('search-modelo')
-    clientes = Cliente.query_all().order_by('codigo')
+    clientes = Cliente.query_all().order_by('codigo_sap')
 
     if search_name:
-        clientes = clientes.filter(nome__contains=search_name)
+        clientes = clientes.filter(nome_sap__contains=search_name)
 
     if search_inbound != 'Seleciona a operação':
         if search_inbound == 'inbound':

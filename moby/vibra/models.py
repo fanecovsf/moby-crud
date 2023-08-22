@@ -3,8 +3,8 @@ from django.db import models
 DATABASE = 'db_vibra'
 
 class Cliente(models.Model):
-    codigo = models.CharField(max_length=255, primary_key=True)
-    nome = models.CharField(max_length=255)
+    codigo_sap = models.CharField(max_length=255, primary_key=True)
+    nome_sap = models.CharField(max_length=255)
     modelo_de_negocio = models.CharField(max_length=255)
     tipo_de_cliente = models.CharField(max_length=255)
     outbound = models.BooleanField()
@@ -23,7 +23,7 @@ class Cliente(models.Model):
     
     @staticmethod
     def get(codigo):
-        cliente = Cliente.objects.using(DATABASE).get(codigo=codigo)
+        cliente = Cliente.objects.using(DATABASE).get(codigo_sap=codigo)
         return cliente
     
 
