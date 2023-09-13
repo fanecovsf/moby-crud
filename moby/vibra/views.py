@@ -55,17 +55,35 @@ def edit_cliente(request, codigo):
     
     
 def produtos(request):
-    search_name = request.GET.get('search-name')
     produtos = Produto.query_all().order_by('produto_codigo')
+    search_name = None
+    search_codigo = None
 
-    if search_name:
-        produtos = produtos.filter(produto_nome__contains=search_name)
+    if request.method == 'POST':
+        search_name = request.POST.get('search-name')
+        search_codigo = request.POST.get('search-codigo')
+
+        if search_name:
+            produtos = produtos.filter(produto_nome__contains=search_name)
+
+        if search_codigo:
+            produtos = produtos.filter(produto_codigo__contains=search_codigo)
+
+        page = Util.pagination(produtos, 100, request)
+
+        return render(request, 'pages/vibra-produtos.html', context={
+                'page':page,
+                'search_name':search_name,
+                'search_codigo':search_codigo
+            }
+        )
 
     page = Util.pagination(produtos, 100, request)
 
     return render(request, 'pages/vibra-produtos.html', context={
             'page':page,
-            'search_name':search_name
+            'search_name':search_name,
+            'search_codigo':search_codigo
         }
     )
 

@@ -17,14 +17,22 @@
       <section class="form-search">
         <form
           class="form-elements"
-          method="GET"
+          method="POST"
           action="#"
         >
+        {% csrf_token %}
           <div>
             <input
               type="text"
               name="search-name"
               placeholder="🔍 Digite o nome do produto"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="search-codigo"
+              placeholder="🔍 Digite o código do produto"
             />
           </div>
           <div>
@@ -63,7 +71,7 @@
     </div>
     <div class="page-links" id="page-links">
       {% if page.has_previous %}
-          <a href="{% url 'produtos' %}?page={{page.previous_page_number}}&search-name={{ search_name|default:'' }}">Anterior</a>
+          <a href="{% url 'produtos' %}?page={{page.previous_page_number}}&search-name={{ search_name|default:'' }}&search-codigo={{ search_codigo|default:'' }}">Anterior</a>
       {% endif %}
   
       {% if page.number > 1 %}
@@ -71,7 +79,7 @@
       {% endif %}
   
       {% if page.has_next %}
-          <a href="{% url 'produtos' %}?page={{page.next_page_number}}&search-name={{ search_name|default:'' }}">Próximo</a>
+          <a href="{% url 'produtos' %}?page={{page.next_page_number}}&search-name={{ search_name|default:'' }}&search-codigo={{ search_codigo|default:'' }}">Próximo</a>
       {% endif %}
     </div>
   </body>
